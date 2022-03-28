@@ -9,7 +9,7 @@ async def getAllTasks():
 
 
 async def getTaskById(task_id: int):
-    return conn.execute(tasks.select().where(tasks.c.id == task_id)).fetchall()
+    return conn.execute(tasks.select().where(tasks.c.task_id == task_id)).fetchall()
 
 
 async def addTask(task: Task):
@@ -32,7 +32,7 @@ async def updateTask(task_id: int, task: Task):
             task_title=task.title,
             task_completed=task.completed,
             card_id=task.card_id
-        ).where(tasks.c.id == task_id))
+        ).where(tasks.c.task_id == task_id))
         return True
     return False
 
@@ -40,6 +40,6 @@ async def updateTask(task_id: int, task: Task):
 async def deleteTask(task_id: int):
     task = await getTaskById(task_id)
     if task:
-        conn.execute(tasks.delete().where(tasks.c.id == task_id))
+        conn.execute(tasks.delete().where(tasks.c.task_id == task_id))
         return True
     return False

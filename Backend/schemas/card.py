@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 
 class Card(BaseModel):
-    id: Optional[int]
+    card_id: Optional[int]
     title: str
 
 

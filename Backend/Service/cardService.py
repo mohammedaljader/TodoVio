@@ -8,7 +8,7 @@ async def getAllCards():
 
 
 async def getCardById(card_id: int):
-    return conn.execute(cards.select().where(cards.c.id == card_id)).fetchall()
+    return conn.execute(cards.select().where(cards.c.card_id == card_id)).fetchall()
 
 
 async def addCard(card: Card):
@@ -19,11 +19,11 @@ async def addCard(card: Card):
 
 
 async def updateCard(card_id: int, card: Card):
-    updatedCard = await getCardById(card.id)
+    updatedCard = await getCardById(card_id)
     if updatedCard:
         conn.execute(cards.update().values(
             card_title=card.title
-        ).where(cards.c.id == card_id))
+        ).where(cards.c.card_id == card_id))
         return True
     return False
 
@@ -31,6 +31,6 @@ async def updateCard(card_id: int, card: Card):
 async def deleteCard(card_id: int):
     card = await getCardById(card_id)
     if card:
-        conn.execute(cards.delete().where(cards.c.id == card_id))
+        conn.execute(cards.delete().where(cards.c.card_id == card_id))
         return True
     return False

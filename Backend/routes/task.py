@@ -34,7 +34,7 @@ async def update_card(task_id: int, taskModel: Task):
 
 
 @task.delete("/api/task/{task_id}")
-async def delete_todos(task_id: int):
+async def delete_task(task_id: int):
     result = await deleteTask(task_id)
     if result:
         return "Task deleted successfully!"
