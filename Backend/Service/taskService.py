@@ -25,13 +25,20 @@ async def addTask(task: Task):
 
 
 async def updateTask(task_id: int, task: Task):
-    card = await getCardById(task.card_id)
     updated_task = await getTaskById(task_id)
-    if card and updated_task:
+    if updated_task:
         conn.execute(tasks.update().values(
-            task_title=task.title,
-            task_completed=task.completed,
-            card_id=task.card_id
+            task_title=task.title
+        ).where(tasks.c.task_id == task_id))
+        return True
+    return False
+
+
+async def updateCompleted(task_id: int, task: Task):
+    updated_task = await getTaskById(task_id)
+    if updated_task:
+        conn.execute(tasks.update().values(
+            task_completed=task.completed
         ).where(tasks.c.task_id == task_id))
         return True
     return False

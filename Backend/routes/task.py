@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from schemas.task import Task
-from Service.taskService import getAllTasks, getTaskById, addTask, updateTask, deleteTask
+from Service.taskService import getAllTasks, getTaskById, addTask, updateTask, deleteTask, updateCompleted
 
 task = APIRouter()
 
@@ -30,6 +30,14 @@ async def update_card(task_id: int, taskModel: Task):
     updatedTask = await updateTask(task_id, taskModel)
     if updatedTask:
         return "Task updated successfully!"
+    raise HTTPException(404, f"There is no task with the id {task_id}")
+
+
+@task.put("/api/task/completed/{task_id}")
+async def update_card(task_id: int, taskModel: Task):
+    updatedTask = await updateCompleted(task_id, taskModel)
+    if updatedTask:
+        return "Task_completed updated successfully!"
     raise HTTPException(404, f"There is no task with the id {task_id}")
 
 

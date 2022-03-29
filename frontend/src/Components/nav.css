@@ -1,0 +1,17 @@
+.bar {
+    width: 100vw;
+    height: 7.5vh;
+    background-color: #122C34;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bar h1 {
+    color: #44CFCB;
+    font-size: 1.5em;
+    font-weight: 600;
+    align-self: center;
+    margin: 0 1.5rem;
+    cursor: default;
+}

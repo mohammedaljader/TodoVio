@@ -1,10 +1,23 @@
+// Packages
+import React from 'react';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+
+
+// Page Components
+import Trello from './trello.js';
+
+// CSS Imports
 import './App.css';
+import './Components/card.css';
 
 function App() {
+  
   return (
-    <div className="App">
-       <h1>Hello World</h1>
-    </div>
+      <BrowserRouter>
+        <Switch>
+            <Route path="/" exact component={Trello}/>
+        </Switch>
+      </BrowserRouter>
   );
 }
 
