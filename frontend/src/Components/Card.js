@@ -3,21 +3,43 @@ import './card.css';
 import Task from './Task';
 
 export default function Card({
-    card_title, taskList, card_id
+    card_title, taskList, card_id,
+    updateCardTitle
 }) 
 {
-  
+    const [newCardTitle, setNewCardTitle] = useState('');
+    const [cardTitleChangeBool, setCardTitleChangeBool] = useState(false);
+
+    const handleUpdateSubmit = (e) => {
+        e.preventDefault();
+        if (newCardTitle === ''){
+            return;
+        }
+        else{
+           updateCardTitle(card_id, newCardTitle)
+           setCardTitleChangeBool(!cardTitleChangeBool)
+           setNewCardTitle('')
+        }
+    }
 
     return (
         <div className="card">
             <div className="title-div">
-                <form action="">
+                {cardTitleChangeBool
+                    ?
+                        <form action="" onSubmit={event => handleUpdateSubmit(event)}>
                                 <input 
+                                    onChange={event => setNewCardTitle(event.target.value)}
                                     className="update-title" 
                                     type="text"
                                     placeholder={card_title}
                                 />
-                </form>      
+                        </form>      
+                    :
+                        <h3 onClick={() => setCardTitleChangeBool(!cardTitleChangeBool)}>
+                            {card_title}
+                        </h3>  
+                }  
             </div>
 
             {taskList.map(curr => (
