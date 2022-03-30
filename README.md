@@ -3,6 +3,23 @@ DoTheJob website helps teams get work done faster.  Collaborate, manage projects
 ![image](https://user-images.githubusercontent.com/78910660/160812073-316f6292-c18b-4e2d-bd81-03124590ccba.png)
 
 
+# Installation
+## Frontend 
+- **cd** into **/frontend**
+- run **npm install** to grab the necessary dependencies 
+- run **npm start** to start the server
+
+## Database 
+- install MySql
+- Create a database called **"trello"**
+- Create two tables called **"card" and "task"**
+- **"card"** table has **"card_id", "card_title"**
+- **"task"** table has **"task_id", "task_title", "task_completed", "card_id"** card_id is a foreign key references to the primary key of card table **"card_id"**
+
+## Backend 
+- **cd** into **/Backend**
+- install the following dependencies **"pip install fastapi uvicorn"** and **"pip install sqlalchemy"**
+- Then, run the server with the command **"uvicorn main:app --reload"**
 
 # Technologies Used
 ### **Front-end / Client Side tools:**
