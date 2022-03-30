@@ -4,11 +4,13 @@ import Task from './Task';
 
 export default function Card({
     card_title, taskList, card_id,
-    updateCardTitle
+    updateCardTitle, deleteCard,
+    updateTaskTitle, addTask, deleteTask, strikeTask
 }) 
 {
     const [newCardTitle, setNewCardTitle] = useState('');
     const [cardTitleChangeBool, setCardTitleChangeBool] = useState(false);
+    const [addTaskTitle, setAddTaskTitle] = useState('')
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +21,17 @@ export default function Card({
            updateCardTitle(card_id, newCardTitle)
            setCardTitleChangeBool(!cardTitleChangeBool)
            setNewCardTitle('')
+        }
+    }
+
+    const handleAddSubmit = (e) => {
+        e.preventDefault();
+        if (addTaskTitle === ''){
+            return;
+        }
+        else{
+           addTask(card_id, addTaskTitle);
+           setAddTaskTitle('');
         }
     }
 
@@ -51,15 +64,20 @@ export default function Card({
                     task_id={curr.task_id}
                     task_completed={curr.task_completed}
                     card_id={card_id}
+                    
+                     // Task Functions
+                     updateTaskTitle={updateTaskTitle}
+                     deleteTask={deleteTask}
+                     strikeTask={strikeTask}
                 />
             ))}
 
-            <form className="add-task" action="input">
-                <input type="text" placeholder="Add Task"/> 
+            <form className="add-task" action="input" onSubmit={event => handleAddSubmit(event)}>
+                <input type="text" placeholder="Add Task" value={addTaskTitle} onChange={event => setAddTaskTitle(event.target.value)}/> 
                 <button className="add-btn" >+</button>  
             </form>
             
-            <button className="delete-card">Delete</button>
+            <button className="delete-card" onClick={() => deleteCard(card_id)}>Delete</button>
         </div>
     )
 }
