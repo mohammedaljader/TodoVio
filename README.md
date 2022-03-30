@@ -1,6 +1,7 @@
 # DoTheJob
 DoTheJob website helps teams get work done faster.  Collaborate, manage projects and increase your productivity. It's possible with DoTheJob website.
-![image](https://user-images.githubusercontent.com/78910660/160810941-43b3454b-1c78-470b-bcfc-9e419c0c4197.png)
+![image](https://user-images.githubusercontent.com/78910660/160812073-316f6292-c18b-4e2d-bd81-03124590ccba.png)
+
 
 
 # Technologies Used
