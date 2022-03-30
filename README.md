@@ -10,11 +10,11 @@ DoTheJob website helps teams get work done faster.  Collaborate, manage projects
 - run **npm start** to start the server
 
 ## Database 
-- install MySql
+- Install MySql
 - Create a database called **"trello"**
 - Create two tables called **"card" and "task"**
-- **"card"** table has **"card_id", "card_title"**
-- **"task"** table has **"task_id", "task_title", "task_completed", "card_id"** card_id is a foreign key references to the primary key of card table **"card_id"**
+- **"card"** table has **"card_id", "card_title"** (**"card_id"** is auto increment primary key)
+- **"task"** table has **"task_id", "task_title", "task_completed", "card_id"** (**"task_id"** is auto increment primary key and **"card_id"** is a foreign key references to the primary key of **"card"** table **"card_id"**)
 
 ## Backend 
 - **cd** into **/Backend**
