@@ -1,5 +1,6 @@
 // Packages
 import React, {useState, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // Child Components
 import Navbar from './Components/Navbar';
@@ -43,7 +44,8 @@ function Trello() {
     //Card functionalities 
     const addCard = () => {
       let nextCard = {
-          title : `New Card (Update)`
+          card_id: uuidv4(),
+          card_title : `New Card (Update)`
       };
   
       setCards([...cards, nextCard]);
@@ -67,7 +69,7 @@ function Trello() {
       setCards(edit);
   
       const updatedCard = {
-          title:newName
+          card_title:newName
       }
       
       CardService.updateCard(card_id, updatedCard).then(() => {
@@ -91,8 +93,9 @@ function Trello() {
      //Task functionalities 
      const addTask = (card_id, addedTitle) => {
       let newTask = {
-          title : addedTitle,
-          completed: false,
+          task_id : uuidv4(),
+          task_title : addedTitle,
+          task_completed: false,
           card_id : card_id,
         };
         
@@ -116,7 +119,7 @@ function Trello() {
       setTasks(edit);
   
       const updatedTask = {
-          title: newName
+        task_title: newName
       }
   
       TaskService.updateTask(task_id , updatedTask).then(() => {
@@ -144,7 +147,7 @@ function Trello() {
           currTask.task_completed = !isStruck;
   
           const updatedTask = {
-              completed: !isStruck
+            task_completed: !isStruck
           }
 
           console.log(updatedTask)

@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
 from schemas.card import Card
 from Service.cardService import getAllCards, getCardById, addCard, updateCard, deleteCard
@@ -12,7 +14,7 @@ async def get_all_cards():
 
 
 @card.get("/api/card/{card_id}")
-async def get_card_by_id(card_id: int):
+async def get_card_by_id(card_id: UUID):
     response = await getCardById(card_id)
     if response:
         return response
@@ -28,7 +30,7 @@ async def add_card(cardModel: Card):
 
 
 @card.put("/api/card/{card_id}")
-async def update_card(card_id: int, cardModel: Card):
+async def update_card(card_id: UUID, cardModel: Card):
     updatedCard = await updateCard(card_id, cardModel)
     if updatedCard:
         return "Card updated successfully!"
@@ -36,7 +38,7 @@ async def update_card(card_id: int, cardModel: Card):
 
 
 @card.delete("/api/card/{card_id}")
-async def delete_card(card_id: int):
+async def delete_card(card_id: UUID):
     result = await deleteCard(card_id)
     if result:
         return "Card deleted successfully!"
