@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 
 // Page Components
@@ -15,13 +17,15 @@ import './Components/card.css';
 function App() {
   
   return (
-    <AlertProvider template={AlertTemplate}>
-      <BrowserRouter>
-        <Switch>
-            <Route path="/" exact component={Trello}/>
-        </Switch>
-      </BrowserRouter>
-    </AlertProvider>
+    <DndProvider backend={HTML5Backend}>
+      <AlertProvider template={AlertTemplate}>
+        <BrowserRouter>
+          <Switch>
+              <Route path="/" exact component={Trello}/>
+          </Switch>
+        </BrowserRouter>
+      </AlertProvider>
+    </DndProvider>
   );
 }
 

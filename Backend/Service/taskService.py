@@ -37,6 +37,17 @@ async def updateTask(task_id: UUID, task: Task):
     return False
 
 
+async def updateCardTask(task_id: UUID, task: Task):
+    card = await getCardById(task.card_id)
+    updated_task = await getTaskById(task_id)
+    if card and updated_task:
+        conn.execute(tasks.update().values(
+            card_id=task.card_id
+        ).where(tasks.c.task_id == task_id))
+        return True
+    return False
+
+
 async def updateCompleted(task_id: UUID, task: Task):
     updated_task = await getTaskById(task_id)
     if updated_task:

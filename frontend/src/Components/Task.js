@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './task.css';
+import { useDrag } from "react-dnd";
 
 export default function Task({
     task_title, task_id, task_completed, card_id,
@@ -10,6 +11,18 @@ export default function Task({
     const [taskTitleChangeBool, setTaskTitleChangeBool] = useState(false);
 
     const [isCompleted, setIsCompleted] = useState(task_completed);
+
+    const [{ isDragging }, drag] = useDrag(() => ({ // eslint-disable-line
+        type: "div",
+        item: { 
+            task_id: task_id,
+            task_title: task_title,
+            task_completed: task_completed
+        },
+        collect: (monitor) => ({
+          isDragging: !!monitor.isDragging(),
+        }),
+      }));
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +43,7 @@ export default function Task({
     
     return (
         <>
-        <div className="task">
+        <div className="task" ref={drag}>
             {taskTitleChangeBool
                 ?
                    <form className="update-form" onSubmit={event => handleUpdateSubmit(event)}>

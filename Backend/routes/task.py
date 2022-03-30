@@ -2,7 +2,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, HTTPException
 from schemas.task import Task
-from Service.taskService import getAllTasks, getTaskById, addTask, updateTask, deleteTask, updateCompleted
+from Service.taskService import getAllTasks, getTaskById, addTask, updateTask, deleteTask, updateCompleted, updateCardTask
 
 task = APIRouter()
 
@@ -33,6 +33,14 @@ async def update_card(task_id: UUID, taskModel: Task):
     if updatedTask:
         return "Task updated successfully!"
     raise HTTPException(404, f"There is no task with the id {task_id}")
+
+
+@task.put("/api/task/newCard/{task_id}")
+async def update_card(task_id: UUID, taskModel: Task):
+    updatedTask = await updateCardTask(task_id, taskModel)
+    if updatedTask:
+        return "Task updated successfully!"
+    raise HTTPException(404, f"There is no task with the id {task_id}/ with card id {taskModel.card_id}")
 
 
 @task.put("/api/task/completed/{task_id}")

@@ -25,6 +25,10 @@ class TaskService {
         return axios.put(api_url + 'task/completed/'+task_id , task);
     }
 
+    TaskToAnotherCard(task_id, task){
+        return axios.put(api_url + 'task/newCard/'+task_id , task);
+    }
+
     deleteTask(task_id){
         return axios.delete(api_url + 'task/' + task_id);
     }
