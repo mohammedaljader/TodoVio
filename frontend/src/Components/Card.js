@@ -20,7 +20,7 @@ export default function Card({
         collect: (monitor) => ({
           isOver: !!monitor.isOver(),
         }),
-      }));
+      }), [taskList]);
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();

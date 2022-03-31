@@ -170,17 +170,9 @@ function Trello() {
             currTask.card_id= card_id;
         }
       })
-      setTasks(edit);
-      // // setTasks(tasks.filter(currTask => currTask.task_id !== task_id));
-      // // let newTask = {
-      // //   task_id : task_id,
-      // //   task_title : task_title,
-      // //   task_completed: task_completed,
-      // //   card_id : card_id,
-      // // };
-      // // console.log(tasks)
-      // setTasks([...tasks, newTask]);
 
+      setTasks(edit);
+      
       const updatedTask = {
         card_id: card_id
       }
@@ -190,7 +182,6 @@ function Trello() {
       }).catch(err=>{console.log(err);
         alert.error('Can not update the task, Please try again!!')
       });
-      window.location.reload(false); 
     };
 
   return (
