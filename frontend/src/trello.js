@@ -163,6 +163,27 @@ function Trello() {
   
     }
 
+    const updateNewCard = (task_id, card_id) => {
+      let edit = tasks.slice();
+      edit.forEach(currTask => {
+        if (currTask.task_id === task_id){
+            currTask.card_id= card_id;
+        }
+      })
+
+      setTasks(edit);
+      
+      const updatedTask = {
+        card_id: card_id
+      }
+
+      TaskService.TaskToAnotherCard(task_id, updatedTask).then(() => {
+        alert.success('Task updated successfully!', {timeout: 2000})
+      }).catch(err=>{console.log(err);
+        alert.error('Can not update the task, Please try again!!')
+      });
+    };
+
   return (
     <>
     <Navbar /> 
@@ -184,6 +205,7 @@ function Trello() {
            addTask={addTask}
            deleteTask={deleteTask}
            strikeTask={strikeTask}
+           updateNewCard={updateNewCard}
         />
       ))}
 

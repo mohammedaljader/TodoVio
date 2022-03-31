@@ -1,16 +1,26 @@
 import React, {useState} from 'react';
 import './card.css';
 import Task from './Task';
+import { useDrop } from "react-dnd";
 
 export default function Card({
     card_title, taskList, card_id,
     updateCardTitle, deleteCard,
-    updateTaskTitle, addTask, deleteTask, strikeTask
+    updateTaskTitle, addTask, deleteTask, strikeTask, updateNewCard
 }) 
 {
     const [newCardTitle, setNewCardTitle] = useState('');
     const [cardTitleChangeBool, setCardTitleChangeBool] = useState(false);
     const [addTaskTitle, setAddTaskTitle] = useState('')
+    // const [Tasks, setTasks] = useState([])
+
+    const [{ isOver }, drop] = useDrop(() => ({ // eslint-disable-line
+        accept: "div",
+        drop: (item) => updateNewCard(item.task_id ,card_id),
+        collect: (monitor) => ({
+          isOver: !!monitor.isOver(),
+        }),
+      }), [taskList]);
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
@@ -35,8 +45,10 @@ export default function Card({
         }
     }
 
+   
+
     return (
-        <div className="card">
+        <div className="card" ref={drop} >
             <div className="title-div">
                 {cardTitleChangeBool
                     ?
