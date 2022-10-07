@@ -6,7 +6,7 @@ export default function Navbar() {
 
     return (
         <div className="bar">
-            <h1>DTJ-website</h1>
+            <h1>TodoVio</h1>
         </div>
     )
 }
