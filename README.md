@@ -29,3 +29,5 @@ TodoVio website helps teams get work done faster. Collaborate, manage projects a
 -  **FastAPI**
 -  **MySQL**
 
+# References
+- Website Logo: https://www.brandbucket.com/names/todovio?rfsn=1439767.ab0c62
