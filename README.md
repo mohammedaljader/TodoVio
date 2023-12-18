@@ -2,7 +2,7 @@
 TodoVio website helps teams get work done faster. Collaborate, manage projects and increase your productivity. It's possible with TodoVio website.
 
 
-![image](https://user-images.githubusercontent.com/78910660/160812073-316f6292-c18b-4e2d-bd81-03124590ccba.png)
+![image](https://user-images.githubusercontent.com/78910660/194551063-b49cb7dc-c964-49ac-b5c3-afaf7f5e29da.png)
 
 
 # Installation
@@ -22,8 +22,10 @@ TodoVio website helps teams get work done faster. Collaborate, manage projects a
 -  **CSS3**
 -  **JavaScript** 
 -  **React.js** - progressive JavaScript framework for building user interfaces.
+-  **React DnD** - Drag and Drop for React
 
 ### **Back-end / Server Side tools:**
 -  **Python**
 -  **FastAPI**
 -  **MySQL**
+--
