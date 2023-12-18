@@ -14,12 +14,12 @@ import './Components/card.css';
 import CardService from './Service/CardService';
 import TaskService from './Service/TaskService';
 
-import { useAlert } from 'react-alert'
+// import { useAlert } from 'react-alert'
 
 function Trello() {
   const [cards, setCards] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const alert = useAlert()
+  // const alert = useAlert()
 
   // Cards and Tasks Calls
   useEffect(() => {
@@ -50,12 +50,12 @@ function Trello() {
   
       setCards([...cards, nextCard]);
       
-      CardService.addCard(nextCard).then(() => {
-        alert.success('Card added successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not make a card, Please try again!!')
-      });
-      // window.location.reload(false);
+      // CardService.addCard(nextCard).then(() => {
+      //   alert.success('Card added successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not make a card, Please try again!!')
+      // });
+      // // window.location.reload(false);
     }
 
     const updateCardTitle = (card_id, newName) => {
@@ -68,26 +68,26 @@ function Trello() {
       })
       setCards(edit);
   
-      const updatedCard = {
-          card_title:newName
-      }
+      // const updatedCard = {
+      //     card_title:newName
+      // }
       
-      CardService.updateCard(card_id, updatedCard).then(() => {
-        alert.success('Card updated successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not update a card, Please try again!!')
-      }); 
+      // CardService.updateCard(card_id, updatedCard).then(() => {
+      //   alert.success('Card updated successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not update a card, Please try again!!')
+      // }); 
     }
 
     const deleteCard = (card_id) => {
       setTasks(tasks.filter(currTask => currTask.card_id !== card_id));
       setCards(cards.filter(currCard => currCard.card_id !== card_id));
 
-      CardService.deleteCard(card_id).then(() => {
-        alert.success('Card deleted successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not delete the card, Please try again!!')
-      }); 
+      // CardService.deleteCard(card_id).then(() => {
+      //   alert.success('Card deleted successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not delete the card, Please try again!!')
+      // }); 
     }
 
      //Task functionalities 
@@ -101,12 +101,12 @@ function Trello() {
         
         setTasks([...tasks, newTask]);
   
-        TaskService.addTask(newTask).then(() => {
-          alert.success('Task added successfully!', {timeout: 2000})
-        }).catch(err=>{console.log(err);
-          alert.error('Can not make a task, Please try again!!')
-        });
-        // setTimeout(() => {  window.location.reload(false); }, 2000);
+        // TaskService.addTask(newTask).then(() => {
+        //   alert.success('Task added successfully!', {timeout: 2000})
+        // }).catch(err=>{console.log(err);
+        //   alert.error('Can not make a task, Please try again!!')
+        // });
+        // // setTimeout(() => {  window.location.reload(false); }, 2000);
     }
 
     const updateTaskTitle = (task_id, newName) => {
@@ -118,25 +118,25 @@ function Trello() {
       })
       setTasks(edit);
   
-      const updatedTask = {
-        task_title: newName
-      }
+      // const updatedTask = {
+      //   task_title: newName
+      // }
   
-      TaskService.updateTask(task_id , updatedTask).then(() => {
-        alert.success('Task updated successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not update the task, Please try again!!')
-      }); 
+      // TaskService.updateTask(task_id , updatedTask).then(() => {
+      //   alert.success('Task updated successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not update the task, Please try again!!')
+      // }); 
     }
 
     const deleteTask = (task_id) => {
       setTasks(tasks.filter(currTask => currTask.task_id !== task_id));
   
-      TaskService.deleteTask(task_id).then(() => {
-        alert.success('Task deleted successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not delete the task, Please try again!!')
-      }); 
+      // TaskService.deleteTask(task_id).then(() => {
+      //   alert.success('Task deleted successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not delete the task, Please try again!!')
+      // }); 
     }
 
     const strikeTask = (task_id) => {
@@ -152,11 +152,11 @@ function Trello() {
 
           console.log(updatedTask)
   
-          TaskService.strikeTask(task_id, updatedTask).then(() => {
-            alert.success('Task updated successfully!', {timeout: 2000})
-          }).catch(err=>{console.log(err);
-            alert.error('Can not update the task, Please try again!!')
-          }); 
+          // TaskService.strikeTask(task_id, updatedTask).then(() => {
+          //   alert.success('Task updated successfully!', {timeout: 2000})
+          // }).catch(err=>{console.log(err);
+          //   alert.error('Can not update the task, Please try again!!')
+          // }); 
         }
       })
       setTasks(edit);
@@ -173,15 +173,15 @@ function Trello() {
 
       setTasks(edit);
       
-      const updatedTask = {
-        card_id: card_id
-      }
+      // const updatedTask = {
+      //   card_id: card_id
+      // }
 
-      TaskService.TaskToAnotherCard(task_id, updatedTask).then(() => {
-        alert.success('Task updated successfully!', {timeout: 2000})
-      }).catch(err=>{console.log(err);
-        alert.error('Can not update the task, Please try again!!')
-      });
+      // TaskService.TaskToAnotherCard(task_id, updatedTask).then(() => {
+      //   alert.success('Task updated successfully!', {timeout: 2000})
+      // }).catch(err=>{console.log(err);
+      //   alert.error('Can not update the task, Please try again!!')
+      // });
     };
 
   return (
